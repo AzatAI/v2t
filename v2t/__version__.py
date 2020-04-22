@@ -11,7 +11,7 @@
 __title__ = "v2t"
 __description__ = "AzatAI Video To Text Converter. "
 __url__ = "https://github.com/AzatAI/v2t"
-__version__ = "1.1.7"
+__version__ = "1.1.9"
 __author__ = "Yaakov Azat"
 __author_email__ = "yaakovazat@gmail.com"
 __license__ = "MIT"

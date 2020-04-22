@@ -16,6 +16,21 @@ def cli():
     extract text from the video files."""
     click.secho('AzatAI video to text Automation tool')
     where = click.prompt('Enter the video file(s) directory:', type=click.Path(file_okay=False, exists=True))
+    language = click.prompt('Please specify a language to process recognition:', type=click.Choice(['en-US', 'zh-CN']))
+    if language in ['en-US', 'zh-CN']:
+        if language == 'zh-CN':
+            if not os.path.isdir(os.path.join(data_path, 'zh-CN')):
+                click.secho('The zh-CN language pack did not installed, installing now....\nThis may take a few '
+                            'minutes depending on your network connection..', fg='yellow')
+                here = os.getcwd()
+                click.secho(f'Working on {os.getcwd()}', fg='yellow')
+                os.chdir(data_path)
+                click.secho(f'Working on {os.getcwd()}', fg='yellow')
+                cmd = 'git clone https://github.com/AzatAI/pocketsphinx-data-zh-CN zh-CN'
+                os.system(cmd)
+                os.chdir(here)
+    else:
+        sys.exit('Invalid language code!')
     all_files = [Path(x) for x in os.listdir(where)]
     videos = [x for x in all_files if x.suffix in ['.mp4', 'mpeg', 'avi', 'mp3']]
     here = os.getcwd()
