@@ -18,7 +18,6 @@ from setuptools import setup, find_packages
 
 here = os.path.abspath(os.path.dirname(__file__))
 
-
 # 'setup.py publish' shortcut.
 if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist')
@@ -31,9 +30,9 @@ if sys.argv[-1] == 'publish':
 requires = [
     # Add prerequired packages here.
     'click',
-    'speechrecognition'
+    'speechrecognition',
+    'pocketsphinx2'
 ]
-
 
 about = {}  # create a empty dictionary to store the content of the __version__.py file
 # execute the __version__.py file and get the content, save to the dictionary about.
@@ -53,8 +52,7 @@ setup(
     author_email=about['__author_email__'],
     url=about['__url__'],
     packages=find_packages(),
-    package_data={'': ['LICENSE']},
-    # package_dir={'startpkg': 'src'},
+    package_data={'': ['LICENSE'], 'v2t': ['data/*']},
     include_package_data=True,
     python_requires=">=3.5",
     install_requires=requires,

@@ -13,5 +13,5 @@ print(here)
 
 @click.command()
 def run():
-    where = click.prompt('Enter the video file(s) directory:', type='path')
-
+    where = click.prompt('Enter the video file(s) directory:', type=click.Path(file_okay=False, exists=True))
+    print(where)
