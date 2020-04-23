@@ -28,6 +28,7 @@ def cli():
                 click.secho(f'Working on {os.getcwd()}', fg='yellow')
                 cmd = 'git clone https://github.com/AzatAI/pocketsphinx-data-zh-CN zh-CN'
                 os.system(cmd)
+                os.listdir('.')
                 os.chdir(here)
     else:
         sys.exit('Invalid language code!')
@@ -56,7 +57,7 @@ def cli():
         audio_file = sr.AudioFile(f'{each}.wav')
         with audio_file as source:
             audio = r.record(source)
-        click.echo(r.recognize_sphinx(audio, language='zh-CN'))
+        click.echo(r.recognize_google(audio, language='zh-cn'))
     os.chdir(here)
     click.secho(f'Working on {os.getcwd()}', fg='yellow')
 
